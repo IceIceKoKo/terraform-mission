@@ -41,7 +41,7 @@ data "vsphere_resource_pool" "pool" {
 }
 
 data "vsphere_network" "network" {
-   name          = "OOB Network"
+   name          = "VLAN102-Ops_IT"
    datacenter_id = data.vsphere_datacenter.dc.id
 }
 
@@ -66,6 +66,147 @@ resource "vsphere_virtual_machine" "vm" {
 
   disk {
     label = "terraform-test-Ubuntu2004.vmdk"
+    size  = 50
+    thin_provisioned = true
+  }
+  cdrom {
+      datastore_id = data.vsphere_datastore.iso.id
+      path         = "iso/ubuntu-20.04.2-live-server-amd64.iso"
+  }
+
+}
+
+resource "vsphere_virtual_machine" "vm1" {
+  name             = "terraform1-test-Ubuntu2004"
+  #resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
+  resource_pool_id = data.vsphere_resource_pool.pool.id
+  datastore_id     = data.vsphere_datastore.datastore.id
+
+  num_cpus = 2
+  memory   = 4096
+  guest_id = "ubuntu64Guest"
+  scsi_type = "lsilogic-sas"
+  
+
+  network_interface {
+    network_id = data.vsphere_network.network.id
+  }
+
+
+  disk {
+    label = "terraform1-test-Ubuntu2004.vmdk"
+    size  = 50
+    thin_provisioned = true
+  }
+  cdrom {
+      datastore_id = data.vsphere_datastore.iso.id
+      path         = "iso/ubuntu-20.04.2-live-server-amd64.iso"
+  }
+
+}
+resource "vsphere_virtual_machine" "vm2" {
+  name             = "terraform2-test-Ubuntu2004"
+  #resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
+  resource_pool_id = data.vsphere_resource_pool.pool.id
+  datastore_id     = data.vsphere_datastore.datastore.id
+
+  num_cpus = 2
+  memory   = 4096
+  guest_id = "ubuntu64Guest"
+  scsi_type = "lsilogic-sas"
+  
+
+  network_interface {
+    network_id = data.vsphere_network.network.id
+  }
+
+
+  disk {
+    label = "terraform2-test-Ubuntu2004.vmdk"
+    size  = 50
+    thin_provisioned = true
+  }
+  cdrom {
+      datastore_id = data.vsphere_datastore.iso.id
+      path         = "iso/ubuntu-20.04.2-live-server-amd64.iso"
+  }
+
+}
+resource "vsphere_virtual_machine" "vm3" {
+  name             = "terraform3-test-Ubuntu2004"
+  #resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
+  resource_pool_id = data.vsphere_resource_pool.pool.id
+  datastore_id     = data.vsphere_datastore.datastore.id
+
+  num_cpus = 2
+  memory   = 4096
+  guest_id = "ubuntu64Guest"
+  scsi_type = "lsilogic-sas"
+  
+
+  network_interface {
+    network_id = data.vsphere_network.network.id
+  }
+
+
+  disk {
+    label = "terraform3-test-Ubuntu2004.vmdk"
+    size  = 50
+    thin_provisioned = true
+  }
+  cdrom {
+      datastore_id = data.vsphere_datastore.iso.id
+      path         = "iso/ubuntu-20.04.2-live-server-amd64.iso"
+  }
+
+}
+resource "vsphere_virtual_machine" "vm4" {
+  name             = "terraform4-test-Ubuntu2004"
+  #resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
+  resource_pool_id = data.vsphere_resource_pool.pool.id
+  datastore_id     = data.vsphere_datastore.datastore.id
+
+  num_cpus = 2
+  memory   = 4096
+  guest_id = "ubuntu64Guest"
+  scsi_type = "lsilogic-sas"
+  
+
+  network_interface {
+    network_id = data.vsphere_network.network.id
+  }
+
+
+  disk {
+    label = "terraform4-test-Ubuntu2004.vmdk"
+    size  = 50
+    thin_provisioned = true
+  }
+  cdrom {
+      datastore_id = data.vsphere_datastore.iso.id
+      path         = "iso/ubuntu-20.04.2-live-server-amd64.iso"
+  }
+
+}
+resource "vsphere_virtual_machine" "vm5" {
+  name             = "terraform5-test-Ubuntu2004"
+  #resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
+  resource_pool_id = data.vsphere_resource_pool.pool.id
+  datastore_id     = data.vsphere_datastore.datastore.id
+
+  num_cpus = 2
+  memory   = 4096
+  guest_id = "ubuntu64Guest"
+  scsi_type = "lsilogic-sas"
+  
+
+  network_interface {
+    network_id = data.vsphere_network.network.id
+  }
+
+
+  disk {
+    label = "terraform5-test-Ubuntu2004.vmdk"
     size  = 50
     thin_provisioned = true
   }
